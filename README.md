@@ -1,5 +1,12 @@
 # GitHub and Web Development Workshop
  ![ACM Armstrong Logo](./img/ACM-logo.png)
+ Hosted by Evan Bonsignori
+ 
+ April 5, 2018 (Thursday)
+ 
+ 12:30 - 2 PM
+ 
+ Science Center, Room 1503A
 
 ## Prerequisites
 
@@ -11,11 +18,10 @@
 
 - Very basic HTML / CSS / JS knowledge
 
-We don't have enough time to cover front-end web development, but most of us
-have been exposed to the basic 3 languages at Armstrong. If you haven't, you'll be absolutely fine - though you should seriously look into it. It takes a few hours to learn the basics and these are things that everyone in technology should know how to do.
+We don't have enough time to cover front-end web development, but most of us have been exposed to the basics of these 3 languages at Armstrong. If you haven't seen these languages before, you should be fine, though you should seriously look into learning them. It only takes a few hours to learn the basics.
 
 ## What are we doing?
-We're going to be deploying a static page to GitHub, and then touching briefly on how to handle a GitHub site's backend with node.js and sockets.
+We're going to be deploying a static page to GitHub, and then touching on how to handle a GitHub site's backend with node.js and sockets.
 
 The template for our frontend is derived from [here](https://www.w3schools.com/howto/howto_css_coming_soon.asp).
 
