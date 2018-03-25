@@ -1,0 +1,27 @@
+{
+  "name": "github-workshop",
+  "version": "1.0.0",
+  "description": "Armstrong ACM-chapter Workshop 3/29/2018",
+  "main": "node.js",
+  "scripts": {
+    "start": "http-server index.html -a localhost -p 907 -o",
+    "build": "browserify node.js -o bundled-node.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ebonsignori/github-workshop.git"
+  },
+  "author": "Evan Bonsignori",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ebonsignori/github-workshop/issues"
+  },
+  "homepage": "https://github.com/Ebonsignori/github-workshop#readme",
+  "dependencies": {
+    "nodemailer": "^4.6.3"
+  },
+  "devDependencies": {
+    "browserify": "^16.1.1",
+    "http-server": "^0.11.1"
+  }
+}
