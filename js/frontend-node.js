@@ -1,6 +1,3 @@
-// Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2019 15:37:25").getTime();
-
 const io = require('socket.io-client');
 
 const socket = io.connect('http://localhost:8005');
