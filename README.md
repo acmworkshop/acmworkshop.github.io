@@ -1,5 +1,5 @@
 # GitHub and Web Development Workshop
-<!-- ![ACM Armstrong Logo](./img/ACM-logo.png) -->
+ ![ACM Armstrong Logo](./img/ACM-logo.png)
 
 ## Prerequesites
 
@@ -82,7 +82,7 @@ For each of the install links, follow the directions for your operating system.
     for all of my development. Java, Python, C++, Javascript, etc. and am hooked.
 
 # Part 1: Git and GitHub
-<!-- ![Github Logo](./img/readme/github-logo.png) -->
+ ![Github Logo](./img/readme/github-logo.png)
 
 ## Git
 
@@ -265,23 +265,6 @@ by `npm init` contains dependencies for your project. Whenever you `npm install`
 the `--save` flag, the dependency is added to the JSON. When you use the `--save-dev` flag,
 it makes sure to not include the dependency when you deploy optimized code.
 
-## Running node Libraries on The Front-end
-Node.js extends javascript to be a backend language. Node files can be run from the command line with a simple
- `node filename.js` command. We can even host an entire backend with node.js
- running locally on our machine, or on remote hosting. Node.js can interact
- SQL and NoSQL databases and do about everything that other backend languages can do.
-
-We can run a lot of node.js code (in our case socket-io) in the frontend using libraries like browserify.
-Browserify bundles / builds / converts into a node js file.
-
-How it does this?
-
-![Browserify Logo](./img/readme/browserify.png)
-
-Yeah, magic as far as we know, but also with this command:
-```
-browserify node.js -o ./js/bundled-node.js
-```
 
 ### Getting the Front-End of Our Project From A Template
 As a web developer you will reuse a LOT of components. Actually, as pretty much any
@@ -310,7 +293,8 @@ with the -g flag, You can run http-server from its location with
 ./node_modules/http-server/bin/http-server . -a localhost -p 9070 -o
 ```
 
-# Part 3: Deploying to GitHub and Socket-io
+# Part 3: Deploying to GitHub and Using Socket-io
+![Socket-io](./img/readme/socket-io-overview.jpg)
 ## Deploy to Github
 First, make sure to add all the files that you've modified to be staged
 for a commit with
@@ -326,8 +310,109 @@ Finally, push the repository to Github
 git push
 ```
 
+Go to your repository on GitHub and go to the settings tab.
 
+Under "GitHub Pages" select the source of your page to the master branch.
 
+You may need to append all of your href links with the name of your project,
+or configure a .yml file named _config.yml in your home directory with the
+baseurl option.
+
+Another option, which we will use in this tutorial, since it is one of the
+best ways to get a decent domain name, is to use the name of your user account as the name of your repository.
+
+Change the repo name to your Github username, and then reload the pages and your
+relative urls will now work.
+
+Alright, you just pushed a static site to GitHub!
+
+We likely don't have more time for anything else, but if you want to checkout the
+next section on your own, it's pretty cool stuff.
+
+## Sockets
+At this point, use the files from my repository and uncomment the following line
+in index.html,
+`<script src="/js/bundled-node.js" type="text/javascript"></script>`
+Then make sure to comment out main.js in index.html so that the line looks like this `<!--<script src="/js/main.js" type="text/javascript"></script>-->`
+
+Run npm install to install the dependencies needed to run server.js.
+
+First we need a server to run and listen for socket-io
+`emits`. This is in our `server.js` file. Read over the file and see that after we connect socket io with `io.connect(...`,
+the socket listens for an emit called _'subscribeToTimer'_ `client.on('subscribeToTimer'...`
+
+Now visit `js/front-end` to see how we connect to our socket with `var socket = io.connect('http://localhost:8005');` 
+on the port that we chose to listen on in server.js with `const port = 8005;` 
+
+### Running node Libraries on The Front-end
+Node.js extends javascript to be a backend language. Node files can be run from the command line with a simple
+ `node filename.js` command. We can even host an entire backend with node.js
+ running locally on our machine, or on remote hosting. Node.js can interact
+ SQL and NoSQL databases and do about everything that other backend languages can do.
+
+We can run a lot of node.js code (in our case socket-io) in the frontend using libraries like browserify.
+Browserify bundles / builds / converts into a node js file.
+
+How it does this?
+
+![Browserify Logo](./img/readme/browserify.png)
+
+Yeah, magic as far as we know, but also with this command: 
+```
+browserify node.js -o ./js/bundled-node.js
+```
+
+### Start the Front-end
+I've included a script that executes the command that bundles anything you write in `js/frontend-node.js` to `js/bundles-node.js` in package.json. 
+Simply run `npm run-script build` and then `npm run-script start` to start a local server on port 9070 like we did earlier.
+
+If we inspect the page and look at the Javascript console we should see something like this:
+```
+GET http://localhost:8005/socket.io/?EIO=3&transport=polling&t=M9UdmKi net::ERR_CONNECTION_REFUSED
+```
+
+This is our socket trying to connect to 8005, but we haven't set up a backend server that listens on 8005. Let's change that.
+
+### Seeing Sockets in Action
+Run our backend server with 
+``` 
+node server.js
+```
+
+Let's review what is happening:
+
+The frontend server (code in `js/frontend-node.js`) emits a 'subscribeToTimer event every 1000 ms with: `socket.emit('subscribeToTimer', 1000);`
+The backendserver (code in `./server.js`) is listening for a 'subscribeToTimer' event with: `client.on('subscribeToTimer'...`
+In response to receving the 'subscribeToTimer' event, the backend server emits `client.emit('timer', new Date().getTime());` 
+The frontend server is listening for a 'timer' event with: `socket.on('timer')`
+In response to receiving a 'timer' event, the frontend code executes lines 13-31 which populates our frontend with the countdown, using the data passing from our server.
+
+We should see our frontend updating the time using the date passed from our server.
+
+## Hosting A Server
+In practice, you could upload your server.js file to remote hosting and set your github.io page's JS to listen to the hosting's domain and port. In our example we listened
+to the address "localhost" and the port "8005". "localhost" is really an alias for 127.0.0.1 or 10.0.0.1. Whenever you type a domain name such as www.google.com into the 
+address bar, there is an underlying IP address that the domain name actually points to. When you create a remote server on some hosting service, you will be given an IP
+and port from which your github site can listen to.
+
+In our server.js's current settup, anyone could emit a 'subscribeToTimer' event and recieve the time. In this sense, our server is an API. We can keep this functionality if 
+we wanted to have API capabailites, or we could only allow socket connections from our github webpage.
+
+After only allowing connections from our GitHub page, server.js can truly act as a backend for our frontend page. We could interact with a database from server.js and get the
+results of queries through sockets. The possibilities are nearly endless. 
+
+If you'd like to settup your own server, I highly recommend starting with Digital Ocean. As a student, you can get a $50 credit using [GitHub student]('https://education.github.com/pack'), which gives you 10 months of free $5/mo hosting. 
+
+Digital Ocean is filled with incredibly easy to follow tutorials for difficult tasks. [Here is an example](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet) of setting up an Ubuntu droplet, which you could then install node onto to run server.js.
+
+## Closing
+The inspiration of this workshop comes from the work I've done with [ForkDelta]('https://forkdelta.github.io/#!/trade/DAI-ETH'). They host their website on GitHub and use
+sockets to connect to their backend and provide an API for other developers to use. ForkDelta is a great example of how GitHub is more than the porfolio and project storage 
+that some people think it is. GitHub can be used for project managment, issue logging, team communications, and more. Issues for your project can be open by the public and 
+developers can be assigned to fixing them. Pull requests are ways to make changes to code and not have it put into production without getting reviewed and approved. 
+
+Even if you go onto working with a company that doesn't use GitHub, they're likely to use similar concepts for project management. If you find yourself with freetime and 
+want to expand your resume and learn a lot of cool new things, I recommend finding an open source project like Forkdelta and contributing to it.
 
 # Appendix
 ## Goodies

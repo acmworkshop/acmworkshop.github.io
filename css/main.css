@@ -3,7 +3,7 @@
 /* Set height to 100% for body and html to enable the background image to cover the whole page: */
 body, html {
     /* Background image */
-    background-image: url('/github-and-web-dev-workshop/img/reflective-squirrel-background.jpg');
+    background-image: url('/img/reflective-squirrel-background.jpg');
     /* Center the background image */
     background-position: center;
     /* Scale and zoom in the image */
@@ -23,7 +23,7 @@ body, html {
     /* Add position: relative to enable absolutely positioned elements inside the image (place text) */
     position: relative;
     /* Add a white text color to all elements inside the .bgimg container */
-    color: azure;
+    color: black;
     /* Add a font */
     font-family: "Courier New", Courier, monospace;
     /* Set the font-size to 25 pixels */

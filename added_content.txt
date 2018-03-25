@@ -1,0 +1,39 @@
+//================================================================================
+// index.html
+//================================================================================
+<form method='post' id='input-form'>
+    <input type="text" id='user-input' required placeholder="Send Squirrel A Message" />
+    <input type="submit"/>
+</form>
+<p id='status'></p>
+
+
+
+//================================================================================
+// server.js
+//================================================================================
+client.on('inputEntered', function (input) {
+    console.log('client has entered input: ', input);
+    client.emit('inputRecieved', input);
+});
+
+
+
+//================================================================================
+// frontend-node.js
+//================================================================================
+// Listen for form submission and on submit, prevent default page reload
+document.getElementById('input-form').addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Get use input
+    let entered_input = document.getElementById('user-input').value
+
+    // Emit an 'inputEntered' event to the server
+    socket.emit('inputEntered', entered_input);
+});
+
+
+socket.on('inputRecieved', function(input_returned) {
+    document.getElementById('status').innerHTML = "Input: \"" + input_returned + "\" was recieved";
+});

@@ -2,23 +2,24 @@
 var countDownDate = new Date("Jan 5, 2019 15:37:25").getTime();
 
 const io = require('socket.io-client');
-var socket = io.connect('http://localhost:8005');
+
+const socket = io.connect('http://localhost:8005');
 
 
 socket.on('connect', function(data) { console.log('connected to server'); });
 socket.on('disconnect', function(data) { console.log('disconnected from server'); });
 
 socket.on('timer', function(timestamp) {
-    var now = timestamp;
+    let now = timestamp;
 
     // Find the distance between now an the count down date
-    var distance = countDownDate - now;
+    let distance = countDownDate - now;
 
     // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in an element with id="demo"
     document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
