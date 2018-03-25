@@ -32,4 +32,6 @@ socket.on('timer', function(timestamp) {
 // Emits a 'subscribeToTimer' request, which server.js intercepts
 socket.emit('subscribeToTimer', 1000);
 
-
+//================================================================================
+/* added_content.txt for frontend-node.js goes here */
+//================================================================================
