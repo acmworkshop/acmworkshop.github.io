@@ -4,8 +4,8 @@
   "description": "Armstrong ACM-chapter Workshop 3/29/2018",
   "main": "node.js",
   "scripts": {
-    "start": "http-server index.html -a localhost -p 907 -o",
-    "build": "browserify node.js -o bundled-node.js"
+    "start": "http-server . -a localhost -p 9070 -o",
+    "build": "browserify ./js/frontend-node.js -t [ babelify --comments false ] -o ./js/bundled-node.js"
   },
   "repository": {
     "type": "git",
@@ -18,10 +18,20 @@
   },
   "homepage": "https://github.com/Ebonsignori/github-workshop#readme",
   "dependencies": {
-    "nodemailer": "^4.6.3"
+    "babel-core": "^6.26.0",
+    "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
     "browserify": "^16.1.1",
     "http-server": "^0.11.1"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
   }
 }

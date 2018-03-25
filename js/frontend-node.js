@@ -1,13 +1,15 @@
-// Javascript copied from https://www.w3schools.com/howto/howto_css_coming_soon.asp
-
 // Set the date we're counting down to
 var countDownDate = new Date("Jan 5, 2019 15:37:25").getTime();
 
-// Update the count down every 1 second
-var x = setInterval(function() {
+const io = require('socket.io-client');
+var socket = io.connect('http://localhost:8005');
 
-    // Get todays date and time
-    var now = new Date().getTime();
+
+socket.on('connect', function(data) { console.log('connected to server'); });
+socket.on('disconnect', function(data) { console.log('disconnected from server'); });
+
+socket.on('timer', function(timestamp) {
+    var now = timestamp;
 
     // Find the distance between now an the count down date
     var distance = countDownDate - now;
@@ -24,7 +26,11 @@ var x = setInterval(function() {
 
     // If the count down is finished, write some text
     if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
+        document.getElementById("demo").innerHTML = "IT IS HERE";
     }
-}, 1000);
+});
+
+// Emits a 'subscribeToTimer' request, which server.js intercepts
+socket.emit('subscribeToTimer', 1000);
+
+
