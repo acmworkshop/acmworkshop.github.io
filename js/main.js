@@ -1,7 +1,7 @@
 // Javascript copied from https://www.w3schools.com/howto/howto_css_coming_soon.asp
 
-// Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2019 15:37:25").getTime();
+// Set the date we're counting down to (end of finals for Spring 2018 semester)
+var countDownDate = new Date("May 3, 2018 18:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
