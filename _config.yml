@@ -1,0 +1,18 @@
+#
+# This file contains configuration flags to customize your site
+#
+
+# Name of your site (displayed in the header)
+name: Your Name
+
+# Short bio or description (displayed in the header)
+description: Web Developer from Somewhere
+
+# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
+google_analytics:
+
+# If you're hosting your site at a Project repository on GitHub pages
+# (http://yourusername.github.io/repository-name)
+# and NOT your User repository (http://yourusername.github.io)
+# then add in the baseurl here, like this: "/repository-name"
+baseurl: "/github-and-web-dev-workshop"
