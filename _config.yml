@@ -12,4 +12,4 @@ description: Demonstrating GitHub Pages
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
-baseurl: "/github-and-web-dev-workshop"
+relative_url: "/github-and-web-dev-workshop"
