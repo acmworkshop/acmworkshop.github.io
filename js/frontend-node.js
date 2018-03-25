@@ -2,6 +2,7 @@ const io = require('socket.io-client');
 
 const socket = io.connect('http://localhost:8005');
 
+var countDownDate = new Date("May 3, 2018 18:00:00").getTime();
 
 socket.on('connect', function(data) { console.log('connected to server'); });
 socket.on('disconnect', function(data) { console.log('disconnected from server'); });
