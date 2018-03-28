@@ -431,12 +431,12 @@ In our server.js's current setup, anyone could emit a 'subscribeToTimer' event a
 After only allowing connections from our GitHub page, server.js can truly act as a backend for our frontend page. We could interact with a database from server.js and get the
 results of queries through sockets. The possibilities are nearly endless. 
 
-If you'd like to setup your own server, I highly recommend starting with Digital Ocean. As a student, you can get a $50 credit using [GitHub student]('https://education.github.com/pack'), which gives you 10 months of free $5/mo hosting. 
+If you'd like to setup your own server, I highly recommend starting with Digital Ocean. As a student, you can get a $50 credit using [GitHub student](https://education.github.com/pack), which gives you 10 months of free $5/mo hosting. 
 
 Digital Ocean is filled with incredibly easy to follow tutorials for complex tasks. [Here is an example](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet) of setting up an Ubuntu droplet, which you could then install node onto to run our server.js.
 
 ## Closing
-The inspiration for this workshop came from open-source contributions that I've made to [ForkDelta]('https://forkdelta.github.io/#!/trade/DAI-ETH'). They host their website on GitHub and use
+The inspiration for this workshop came from open-source contributions that I've made to [ForkDelta](https://forkdelta.github.io/#!/trade/DAI-ETH). They host their website on GitHub and use
 sockets to connect to their backend. These same sockets on their backend provide an API for other developers to use. 
 
 ForkDelta is a great example of how GitHub is more than the portfolio and project storage that some people think it is. GitHub can be used for project management, issue logging, team communications, and much more. Submitting issues for your project can be open to the public and developers can be assigned to fix them.
@@ -454,18 +454,18 @@ Even if you end up in a job doesn't use GitHub (a lot of places are now), they'r
 - [Git Commit Best Practices](https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53)
 
 ### Pre-made Website Templates and Components
-- [Components on Codepen]('https://codepen.io/')
-- [Static Sites on HTML5UP]('https://html5up.net/')
+- [Components on Codepen](https://codepen.io/)
+- [Static Sites on HTML5UP](https://html5up.net/)
 If you want to learn bootstrap:
-- [Colorlib top 40]('https://colorlib.com/wp/free-bootstrap-landing-pages-templates/')
+- [Colorlib top 40](https://colorlib.com/wp/free-bootstrap-landing-pages-templates/)
 
 ### License-Free Image Sites
-- [pexels]('https://www.pexels.com/')
-- [pixabay]('https://pixabay.com/')
-- [freeimages.co]('http://www.freeimages.co.uk/galleries.htm')
+- [pexels](https://www.pexels.com/)
+- [pixabay](https://pixabay.com/)
+- [freeimages.co](http://www.freeimages.co.uk/galleries.htm)
 
     Free icons are incredibly useful too:
-- [Icons at flaticon]('https://www.flaticon.com/search?word=folder')
+- [Icons at flaticon](https://www.flaticon.com/search?word=folder)
 
 ## Terms
 - NPM : [Node Package Manager](https://www.npmjs.com/)
