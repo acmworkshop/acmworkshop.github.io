@@ -1,6 +1,6 @@
 # GitHub and Web Development Workshop
  ![ACM Armstrong Logo](./img/ACM-logo.png)
- Hosted by Evan Bonsignori
+ Hosted by Evan Bonsignori @ebonsignori
  
  April 5, 2018 (Thursday)
  
@@ -71,15 +71,15 @@ For each of the install links, follow the directions for your operating system.
     Run the following command (no virus I swar)
 
     ```
-    git clone https://github.com/Ebonsignori/Ebonsignori.github.io.git
+    git clone https://github.com/acmworkshop/acmworkshop.git
     ```
       After cloning, you should have the following directory (./Projects/learning can be anything)
 
-    `./Projects/learning/Ebonsignori.github.io`
+    `./Projects/learning/acmworkshop`
 
-    Make the following directory with your GitHub name followed by .github.io
+    Make the following directory with your GitHub name
 
-    `./Projects/learning/<my-username>.github.io`
+    `./Projects/learning/<my-github-username>`
 
 7. **Get an IDE:**
 
@@ -98,13 +98,13 @@ For each of the install links, follow the directions for your operating system.
 
 
 
-From your CLI, navigate to `./Projects/learning/<my-username>.github.io`, and run the following command to initialize a git repository.
+From your CLI, navigate to `./Projects/learning/<my-github-username>`, and run the following command to initialize a git repository.
 
 ```
 git init
 ```
 
-`./Projects/learning/<my-username>.github.io` is now a git repository that isn't tracking any files.
+`./Projects/learning/<my-github-username>` is now a git repository that isn't tracking any files.
 
 Create the following files.
 1. _README.md_
@@ -153,7 +153,7 @@ This is the text after a heading. **Cool** _right_?
 
 - Author : <your name>
 - Date : 3/29/18
-- From : [Evan's Workshop](https://github.com/Ebonsignori/Ebonsignori.github.io)
+- From : [Evan's Workshop](https://github.com/acmworkshop/acmworkshop)
 ```
 Save README.md and type `git status` again.
 
@@ -329,13 +329,14 @@ Alright! **Well done**, you just pushed a static site to GitHub!
 Your site could even appear in a Google search if you wanted it to, though you'd have poor search ranking without any search engine optimization (SEO). 
 
 ## Sockets
-At this point, change directories to `Ebonsignori.github.io` and use the files from my repository.
+At this point, change directories to the `acmworkshop` directory where we cloned the GitHub repo,
+ and use the files from the cloned repository from this point on.
 
 Uncomment  and comment out the script tags at the end of index.html so that they are as follows:
 `<script src="/js/bundled-node.js" type="text/javascript"></script>`
 `<!--<script src="/js/main.js" type="text/javascript"></script>-->`
 
-Run `npm install` from the CLI in the `Ebonsignori.github.io` directory to install the dependencies needed to run server.js.
+Run `npm install` from the CLI in the `acmworkshop` directory to install the dependencies needed to run server.js.
 
 We need a server to run and listen for socket-io `emits`. This is in our `server.js` file. Read the file and see that after we connect socket io with `io.connect(...`,
 the socket listens for an emit called _'subscribeToTimer'_ `client.on('subscribeToTimer'...`
